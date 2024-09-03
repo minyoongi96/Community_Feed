@@ -46,6 +46,10 @@ public class User {
 		return id;
 	}
 
+	public UserInfo getUserInfo() {
+		return userInfo;
+	}
+
 	public int followingCount() {
 		return followingCounter.getCount();
 	}
