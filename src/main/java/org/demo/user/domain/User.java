@@ -46,6 +46,14 @@ public class User {
 		return id;
 	}
 
+	public int followingCount() {
+		return followingCounter.getCount();
+	}
+
+	public int followerCount() {
+		return followerCounter.getCount();
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) {
