@@ -53,7 +53,7 @@ class UserRelationServiceTest {
     }
 
     @Test
-    void givenCreateOneUser_whenFollow_thenThrowError(){
+    void givenCreateSameUser_whenFollow_thenThrowError(){
         // given
         FollowUserRequestDto sameUserDto = new FollowUserRequestDto(user1.getId(), user1.getId());
 
@@ -74,4 +74,18 @@ class UserRelationServiceTest {
         assertEquals(0, user2.followerCount());
     }
 
+    @Test
+    void givenCreateTwoUser_whenUnfollow_thenThrowError(){
+        // when, then
+        assertThrows(IllegalArgumentException.class, () -> userRelationService.unfollow(requestDto));
+    }
+
+    @Test
+    void givenSameUser_whenFollow_thenThrowError(){
+        // when
+        FollowUserRequestDto sameUserDto = new FollowUserRequestDto(user1.getId(), user1.getId());
+
+        // when, then
+        assertThrows(IllegalArgumentException.class, () -> userRelationService.follow(sameUserDto));
+    }
 }
