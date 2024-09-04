@@ -1,6 +1,7 @@
 package org.demo.post.domain;
 
 import org.demo.common.domain.PositiveIntegerCounter;
+import org.demo.post.domain.content.Content;
 import org.demo.post.domain.content.PostPulicationState;
 import org.demo.user.domain.User;
 import org.demo.post.domain.content.PostContent;
@@ -8,20 +9,40 @@ import org.demo.post.domain.content.PostContent;
 public class Post {
 	private final Long id;
 	private final User author;
-	private final PostContent postContent;
+	private final Content content;
 	private final PositiveIntegerCounter likeCounter;
 	private PostPulicationState state;
 
-	public Post(Long id, User author, PostContent postContent, PositiveIntegerCounter likeCounter) {
+	public static Post createPost(Long id, User author, String content, PostPulicationState state){
+		return new Post(id, author, new PostContent(content), state);
+	}
+
+	public static Post createDefaultPost(Long id, User author, String content){
+		return new Post(id, author, new PostContent(content), PostPulicationState.PUBLIC);
+	}
+
+	public Post(Long id, User author, Content content, PostPulicationState state) {
 		if(author == null){
 			throw new IllegalArgumentException("Author cannot be null");
 		}
 
 		this.id = id;
 		this.author = author;
-		this.postContent = postContent;
-		this.likeCounter = likeCounter;
-		this.state = PostPulicationState.PUBLIC;
+		this.content = content;
+		this.likeCounter = new PositiveIntegerCounter();
+		this.state = state;
+	}
+
+	public Post(Long id, User author, Content content){
+		this(id, author, content, PostPulicationState.PUBLIC);
+	}
+
+	public int getLikeCount(){
+		return likeCounter.getCount();
+	}
+
+	public String getContent(){
+		return content.getContentText();
 	}
 
 	// 좋아요
@@ -44,6 +65,6 @@ public class Post {
 		}
 
 		this.state = state;
-		this.postContent.updateContent(updateContent);
+		this.content.updateContent(updateContent);
 	}
 }

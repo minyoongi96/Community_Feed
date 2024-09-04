@@ -2,7 +2,9 @@ package org.demo.post.domain.comment;
 
 import org.demo.common.domain.PositiveIntegerCounter;
 import org.demo.post.domain.Post;
+import org.demo.post.domain.content.CommentContent;
 import org.demo.post.domain.content.Content;
+import org.demo.post.domain.content.PostContent;
 import org.demo.user.domain.User;
 
 public class Comment {
@@ -12,7 +14,11 @@ public class Comment {
 	private final Content content;
 	private final PositiveIntegerCounter likeCounter;
 
-	public Comment(Long id, Post post, User author, Content content, PositiveIntegerCounter likeCounter) {
+	public static Comment createComment(Post post, User author, String content){
+		return new Comment(null, post, author, new CommentContent(content));
+	}
+
+	public Comment(Long id, Post post, User author, Content content) {
 		if(post == null){
 			throw new IllegalArgumentException("Post cannot be null");
 		}
@@ -29,7 +35,7 @@ public class Comment {
 		this.post = post;
 		this.author = author;
 		this.content = content;
-		this.likeCounter = likeCounter;
+		this.likeCounter = new PositiveIntegerCounter();
 	}
 
 	// 좋아요
@@ -52,5 +58,13 @@ public class Comment {
 		}
 
 		this.content.updateContent(updateContent);
+	}
+
+	public int getLikeCount(){
+		return likeCounter.getCount();
+	}
+
+	public String getContent(){
+		return content.getContentText();
 	}
 }
