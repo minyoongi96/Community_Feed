@@ -1,10 +1,10 @@
 package org.demo.post.domain.content;
 
-public class ComentContent extends Content {
+public class CommentContent extends Content {
 
 	private static final int MAX_CONTENT_LENGTH = 100;
 
-	public ComentContent(String contentText) {
+	public CommentContent(String contentText) {
 		super(contentText);
 	}
 
