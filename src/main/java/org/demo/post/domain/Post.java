@@ -37,12 +37,24 @@ public class Post {
 		this(id, author, content, PostPulicationState.PUBLIC);
 	}
 
+	public Long getId() {
+		return this.id;
+	}
+
+	public User getAuthor() {
+		return this.author;
+	}
+
 	public int getLikeCount(){
 		return likeCounter.getCount();
 	}
 
 	public String getContent(){
 		return content.getContentText();
+	}
+
+	public Content getContentObject(){
+		return this.content;
 	}
 
 	// 좋아요
