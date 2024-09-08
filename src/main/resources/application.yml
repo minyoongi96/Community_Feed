@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/community_feed
+    username: root
+    password:
+#    url: ENC(buq1ArFFNv+GEb33J1w2nvvwedgUCWpEYnvxByphEhrnk30SZMh5ttShpcItFrG+tAuFsDn4weeIFCJxzW54cg2xleOK74fMVWEBhXyvkFc=)
+#    username: ENC(2fH93lhO4iI4LlDvZHbdXhF27vPpYAv2vyIp+QwGf6f20TIDNZA2S+Q7JZYZPmoK)
+#    password:
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+    open-in-view: false

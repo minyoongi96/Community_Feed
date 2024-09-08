@@ -1,6 +1,6 @@
 package org.demo.post.application.dto;
 
-import org.demo.post.domain.content.PostPulicationState;
+import org.demo.post.domain.content.PostPublicationState;
 
-public record CreatePostRequestDto(Long userId, String content, PostPulicationState state) {
+public record CreatePostRequestDto(Long userId, String content, PostPublicationState state) {
 }

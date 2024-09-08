@@ -2,7 +2,7 @@ package org.demo.post;
 
 import org.demo.post.domain.Post;
 import org.demo.post.domain.content.PostContent;
-import org.demo.post.domain.content.PostPulicationState;
+import org.demo.post.domain.content.PostPublicationState;
 import org.demo.user.domain.User;
 import org.demo.user.domain.UserInfo;
 import org.junit.jupiter.api.Test;
@@ -48,7 +48,7 @@ class PostTest {
     void givenPostCreated_whenUpdateContent_thenContentShouldBeUpdated(){
         // when
         String updateContent = "this is an updateContent";
-        post.updatePost(user, updateContent, PostPulicationState.PUBLIC);
+        post.updatePost(user, updateContent, PostPublicationState.PUBLIC);
 
         // then
         assertEquals(updateContent, post.getContent());
@@ -58,7 +58,7 @@ class PostTest {
     void givenPostCreated_whenUpdateContentByOtherUser_thenThrowException(){
         // when, then
         String updateContent = "this is an updateContent";
-        assertThrows(IllegalArgumentException.class, () -> post.updatePost(otherUser, updateContent, PostPulicationState.PUBLIC));
+        assertThrows(IllegalArgumentException.class, () -> post.updatePost(otherUser, updateContent, PostPublicationState.PUBLIC));
 
 
     }

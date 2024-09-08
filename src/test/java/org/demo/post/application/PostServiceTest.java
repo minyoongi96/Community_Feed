@@ -1,25 +1,11 @@
 package org.demo.post.application;
 
-import org.demo.fake.FakeObjectFactory;
-import org.demo.post.application.dto.CreatePostRequestDto;
 import org.demo.post.application.dto.LikeRequestDto;
 import org.demo.post.domain.Post;
-import org.demo.post.domain.content.PostPulicationState;
-import org.demo.user.application.UserService;
-import org.demo.user.application.dto.CreateUserRequestDto;
-import org.demo.user.domain.User;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PostServiceTest extends PostApplicationTestTemplate{
-
-//    private final UserService userService = FakeObjectFactory.getUserService();
-//    private final PostService postService = FakeObjectFactory.getPostService();
-//
-//    private final User user = userService.createUser(new CreateUserRequestDto("user1", "url"));
-//    private final User otherUser = userService.createUser(new CreateUserRequestDto("user2", "url"));
-//
-//    private final CreatePostRequestDto dto = new CreatePostRequestDto(user.getId(), "this is test content", PostPulicationState.PUBLIC);
 
     @Test
     void givneRequestDto_whenCreate_thenReturnPost(){
