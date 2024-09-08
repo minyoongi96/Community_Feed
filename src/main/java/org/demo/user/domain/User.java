@@ -1,13 +1,25 @@
 package org.demo.user.domain;
 
 import java.util.Objects;
+
+import jakarta.persistence.Embedded;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.demo.common.domain.PositiveIntegerCounter;
 
+@Getter
+@AllArgsConstructor
+@Builder
 public class User {
-	private final Long id;
-	private final UserInfo userInfo;
-	private final PositiveIntegerCounter followingCounter;
-	private final PositiveIntegerCounter followerCounter;
+
+	private Long id;
+	private UserInfo userInfo;
+	private PositiveIntegerCounter followingCounter;
+	private PositiveIntegerCounter followerCounter;
 
 	public User(Long id, UserInfo userInfo) {
 		this.id = id;
@@ -42,20 +54,20 @@ public class User {
 		followerCounter.decrease();
 	}
 
-	public Long getId() {
-		return id;
-	}
-
-	public UserInfo getUserInfo() {
-		return userInfo;
-	}
-
 	public int followingCount() {
 		return followingCounter.getCount();
 	}
 
 	public int followerCount() {
 		return followerCounter.getCount();
+	}
+
+	public String getName(){
+		return userInfo.getName();
+	}
+
+	public String getProfileImage(){
+		return userInfo.getProfileImageUrl();
 	}
 
 	@Override

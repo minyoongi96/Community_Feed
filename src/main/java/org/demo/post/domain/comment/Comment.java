@@ -1,5 +1,8 @@
 package org.demo.post.domain.comment;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
 import org.demo.common.domain.PositiveIntegerCounter;
 import org.demo.post.domain.Post;
 import org.demo.post.domain.content.CommentContent;
@@ -7,12 +10,15 @@ import org.demo.post.domain.content.Content;
 import org.demo.post.domain.content.PostContent;
 import org.demo.user.domain.User;
 
+@Getter
+@Builder
+@AllArgsConstructor
 public class Comment {
 	private final Long id;
 	private final Post post;
 	private final User author;
 	private final Content content;
-	private final PositiveIntegerCounter likeCounter;
+	private final PositiveIntegerCounter likeCount;
 
 	public static Comment createComment(Post post, User author, String content){
 		return new Comment(null, post, author, new CommentContent(content));
@@ -35,7 +41,7 @@ public class Comment {
 		this.post = post;
 		this.author = author;
 		this.content = content;
-		this.likeCounter = new PositiveIntegerCounter();
+		this.likeCount = new PositiveIntegerCounter();
 	}
 
 	// 좋아요
@@ -44,12 +50,12 @@ public class Comment {
 			throw new IllegalArgumentException();
 		}
 
-		likeCounter.increase();
+		likeCount.increase();
 	}
 
 	// 좋아요 취소
 	public void unlike(){
-		likeCounter.decrease();
+		likeCount.decrease();
 	}
 
 	public void updateContent(User user, String updateContent){
@@ -60,20 +66,8 @@ public class Comment {
 		this.content.updateContent(updateContent);
 	}
 
-	public Long getId() {
-		return id;
-	}
-
-	public Post getPost() {
-		return post;
-	}
-
-	public User getAuthor() {
-		return author;
-	}
-
 	public int getLikeCount(){
-		return likeCounter.getCount();
+		return likeCount.getCount();
 	}
 
 	public String getContent(){
