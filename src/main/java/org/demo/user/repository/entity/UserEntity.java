@@ -28,9 +28,6 @@ public class UserEntity extends TimeBaseEntity {
     private Integer followerCount;
     private Integer followingCount;
 
-    @OneToMany
-    private List<PostEntity> posts;
-
     public UserEntity(User user) {
         this.id = user.getId();
         this.name = user.getName();

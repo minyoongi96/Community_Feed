@@ -18,7 +18,7 @@ import org.demo.user.repository.entity.UserEntity;
 @Getter
 public class PostEntity extends TimeBaseEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne

@@ -4,9 +4,7 @@ import org.demo.user.application.dto.CreateUserRequestDto;
 import org.demo.user.application.interfaces.UserRepository;
 import org.demo.user.domain.User;
 import org.demo.user.domain.UserInfo;
-import org.springframework.stereotype.Service;
 
-@Service
 public class UserService {
 
     private final UserRepository userRepository;
