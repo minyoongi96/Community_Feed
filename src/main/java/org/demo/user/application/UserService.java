@@ -1,10 +1,13 @@
 package org.demo.user.application;
 
 import org.demo.user.application.dto.CreateUserRequestDto;
+import org.demo.user.application.dto.GetUserResponseDto;
 import org.demo.user.application.interfaces.UserRepository;
 import org.demo.user.domain.User;
 import org.demo.user.domain.UserInfo;
+import org.springframework.stereotype.Service;
 
+@Service
 public class UserService {
 
     private final UserRepository userRepository;
@@ -21,6 +24,11 @@ public class UserService {
     }
 
     public User getUser(Long id){
-        return userRepository.findById(id).orElseThrow(IllegalArgumentException::new);
+        return userRepository.findById(id);
+    }
+
+    public GetUserResponseDto getUserProfile(Long id){
+        User user = getUser(id);
+        return new GetUserResponseDto(user);
     }
 }
