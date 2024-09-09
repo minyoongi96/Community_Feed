@@ -9,6 +9,7 @@ import org.demo.common.repository.entity.TimeBaseEntity;
 import org.demo.post.repository.entity.post.PostEntity;
 import org.demo.user.domain.User;
 import org.demo.user.domain.UserInfo;
+import org.hibernate.annotations.DynamicUpdate;
 
 import java.util.List;
 
@@ -17,6 +18,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
+@DynamicUpdate
 public class UserEntity extends TimeBaseEntity {
 
     @Id
